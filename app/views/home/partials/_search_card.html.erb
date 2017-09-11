@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col s6 offset-s3">
-    <div class="card medium blue-grey darken-1 center-align">
+  <div class="col s6">
+    <div class="card medium blue-grey darken-1 center-align z-depth-4">
       <div class="card-content white-text">
         <span class="card-title">Search articles</span>
         <p>Search for any article below, in case of doubt get in touch with us</p>
@@ -10,6 +10,27 @@
         <i class="material-icons prefix">search</i>
         <input id="article_input" type="text" class="validate">
         <label for="article_input">Article</label>
+        <%= image_tag "spinner.gif", id: 'spinner_gif', alt: "Thumbnail Image", style: "height: 50px; width: 50px;" %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col s6">
+    <div class="card medium blue-grey darken-1 center-align z-depth-4">
+      <div class="card-content white-text">
+        <span class="card-title">Articles</span>
+        <p>Articles found</p>
+        <table class="responsive-table">
+        <thead>
+          <tr>
+              <th>Article</th>
+              <th>search times</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
       </div>
     </div>
   </div>

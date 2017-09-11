@@ -1,4 +1,5 @@
+# Controller related to home page actions.
 class HomeController < ApplicationController
-  def index
-  end
+  # GET /index
+  def index; end
 end
