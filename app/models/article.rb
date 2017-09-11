@@ -1,24 +1,40 @@
 # Model that represents an article and it's actions.
 class Article < ApplicationRecord
-  scope :by_name, ->(name) { where(name: name) }
+  ARTICLE_REGEX = /How do I .+|What is my .+|How can I .+|How to .+|What do I .+/
 
   def process_article_query(article_input)
     article_by_name = Article.by_name(article_input)
-    if article_by_name.empty?
+    if article_by_name.blank?
       match_article_input(article_input)
     else
       add_search_times(article_by_name)
     end
   end
 
+  def self.by_name(name)
+    find_by(name: name)
+  end
+
+  def self.retrieve_article_data
+    articles = Article.all
+    filtered_articles = []
+    articles.each do |article|
+      data = {}
+      data[:name] = article.name
+      data[:y] = article.search_times
+      filtered_articles << data
+    end
+    filtered_articles
+  end
+
   private
 
   def add_search_times(article)
-    article.first.update_column(:search_times, article.first.search_times + 1)
+    article.update(search_times: article.search_times + 1)
   end
 
   def match_article_input(article_name)
-    match_data = article_name.match(/How do I .+|What is my .+|How can I .+|How to .+|What do I .+/)
+    match_data = article_name.match(ARTICLE_REGEX)
     if match_data.present?
       save_article(article_name)
     else

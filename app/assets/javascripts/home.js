@@ -1,17 +1,18 @@
 function build_articles_table(response) {
-$("#table-body").empty();
-$("#table-body").append(
-  '<tr>' +
-    '<td>Alvin</td>' +
-    '<td>Eclair</td>' +
-    '<td>$0.87</td>' +
-  '</tr>'
-);
+  $("#table-body").empty();
+  response.forEach(function(article) {
+    $("#table-body").append(
+      '<tr>' +
+        '<td>' + article.name + '</td>' +
+        '<td>' + article.search_times + '</td>' +
+      '</tr>'
+    );
+  });
 }
 
 function captureInput() {
   var typingTimer;                //timer identifier
-  var doneTypingInterval = 2500;  //time in ms (3.5 seconds)
+  var doneTypingInterval = 1500;  //time in ms (3.5 seconds)
 
   //on keyup, start the countdown
   $('#article_input').keyup(function(){

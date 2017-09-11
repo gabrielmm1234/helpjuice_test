@@ -2,3 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+table {
+    width: 100%; /* Optional */
+}
+
+tbody td, thead th {
+    width: 20%;  /* Optional */
+}
+
+thead, tbody { display: block; }
+
+tbody {
+    height: 200px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
