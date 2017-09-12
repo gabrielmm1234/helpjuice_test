@@ -22,7 +22,7 @@ function build_chart(data) {
       }
     },
     series: [{
-      name: 'article',
+      name: 'search',
       colorByPoint: true,
       data: data
     }]
