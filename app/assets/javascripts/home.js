@@ -12,7 +12,7 @@ function build_articles_table(response) {
 
 function captureInput() {
   var typingTimer;                //timer identifier
-  var doneTypingInterval = 1500;  //time in ms (3.5 seconds)
+  var doneTypingInterval = 2500;  //time in ms (3.5 seconds)
 
   //on keyup, start the countdown
   $('#article_input').keyup(function(){
@@ -20,6 +20,7 @@ function captureInput() {
 
       if($('#article_input').val() == '') {
         $("#spinner_gif").hide();
+        $("#table-body").empty();
       }
       clearTimeout(typingTimer);
       if ($('#article_input').val()) {
@@ -43,7 +44,17 @@ function captureInput() {
   }
 }
 
+function clearStats() {
+  $('#clear_stats').click(function(){
+    $.ajax({
+      method: 'DELETE',
+      url: 'articles/destroy'
+    });
+  });
+}
+
 $(document).ready(function () {
   $("#spinner_gif").hide();
   captureInput();
+  clearStats();
 });

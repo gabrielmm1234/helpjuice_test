@@ -36,7 +36,6 @@ $(document).ready(function () {
     dataType: 'json',
     success: function(response) {
       build_chart(response);
-      console.log(response);
     }
   });
 });
