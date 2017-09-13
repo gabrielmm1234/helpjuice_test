@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '.filter_by_name' do
+    it 'should return articles with filtered by name' do
+      Article.create!(name: 'How do I signup', search_times: 10, link: '')
+      articles = Article.filter_by_name('How do I')
+      expect(articles.first.name).to eq('How do I signup')
+    end
+  end
 end
